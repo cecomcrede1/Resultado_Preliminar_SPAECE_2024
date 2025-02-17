@@ -178,6 +178,7 @@ else:
     output = io.BytesIO()
     with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
         df_final.to_excel(writer, index=False, sheet_name='Dados')
+        writer.close()  # Certifique-se de fechar o writer antes de ler o conteúdo
         processed_data = output.getvalue()
 
     # Criar botão para download
