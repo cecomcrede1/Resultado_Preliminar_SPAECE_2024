@@ -92,15 +92,6 @@ else:
     st.markdown(f"<h3 style='font-family: Kanit; font-size: 20px; font-weight: bold;'>Seja bem-vindo gestor de {municipio_usuario}!</h3>", unsafe_allow_html=True)
     
     st.markdown(
-        "<h1 style='font-family: Kanit; font-size: 36px; font-weight: bold;'>SPAECE 2024</h1>",
-        unsafe_allow_html=True
-    )
-    st.markdown(
-        "<h3 style='font-family: Kanit; font-size: 30px; font-weight: bold;'>Resultados Preliminares</h3>",
-        unsafe_allow_html=True
-    )
-    
-    st.markdown(
         "<h3 style='font-family: Kanit; font-size: 25px; font-weight: normal;'>Baixe aqui os resultados preliminares do SPAECE 2024 organizados por escola, por turma ou por Estudante.</h3>",
         unsafe_allow_html=True
     )
