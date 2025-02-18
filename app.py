@@ -19,7 +19,7 @@ Image.MAX_IMAGE_PIXELS = None
 
 # Configuração para tela cheia (modo wide)
 st.set_page_config(layout="wide", page_title="Resultados Preliminares SPAECE", page_icon="spaece.png")
-st.info("Para melhor visualização, recomendamos usar o tema claro. Você pode alterar o tema nas configurações do Streamlit (Menu > Settings > Theme).")
+st.info("Para melhor visualização, recomendamos usar o tema claro. Você pode alterar o tema nas configurações do Streamlit (Menu (⋮) > Settings > Theme).")
 
 # Adicionando Kanit via CSS no Streamlit
 st.markdown(
