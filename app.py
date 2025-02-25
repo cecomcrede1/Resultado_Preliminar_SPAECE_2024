@@ -250,7 +250,7 @@ else:
     
     
     # Criar colunas dinamicamente com as faixas filtradas
-    cols = st.columns(len(faixa_counts))
+    cols = st.columns(len(faixa_counts)) 
     
     # Exibir cada faixa na ordem definida
     #for col, (faixa, count) in zip(cols, faixa_counts.items()):
