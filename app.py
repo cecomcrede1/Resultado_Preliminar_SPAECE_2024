@@ -147,7 +147,11 @@ else:
 
     # Filtrando componentes curriculares
     componentes_disponiveis = sorted(df_filtrado_turma["COMPONENTE CURRICULAR"].unique().tolist())
-    componente_filtro = st.sidebar.selectbox("Selecione o Componente Curricular", componentes_disponiveis)
+    # Definir o índice padrão como "Língua Portuguesa" se estiver na lista
+    indice_padrao = componentes_disponiveis.index("LP") if "LP" in componentes_disponiveis else 0
+    # Criar o selectbox com a opção pré-selecionada
+    componente_filtro = st.sidebar.selectbox("Selecione o Componente Curricular", componentes_disponiveis, index=indice_padrao)
+    
 
 
 
