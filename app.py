@@ -146,7 +146,7 @@ else:
     estudante_filtro = st.sidebar.selectbox("Selecione o Estudante", estudantes_disponiveis)
 
     # Filtrando componentes curriculares
-    componentes_disponiveis = sorted(df_filtrado_turma["COMPONENTE CURRICULAR"].unique().tolist())
+    componentes_disponiveis = ["Todos"] +  sorted(df_filtrado_turma["COMPONENTE CURRICULAR"].unique().tolist())
     componente_filtro = st.sidebar.selectbox("Selecione o Componente Curricular", componentes_disponiveis)
     
 
@@ -198,11 +198,7 @@ else:
     df_avaliados = df_final[df_final['AVALIADO'] == 'SIM']
     
     # Calcular a média das proficiências
-    media_proficiencia = df_avaliados["PROFICIENCIA MÉDIA"].mean()
-    if pd.isna(media_proficiencia):
-        media_proficiencia = 0
-    else:
-        media_proficiencia = int(media_proficiencia)
+    media_proficiencia = int(df_avaliados['PROFICIENCIA MÉDIA'].astype(float).mean()))
 
     st.metric(label="Média dos alunos presentes", value=media_proficiencia)
     
