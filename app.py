@@ -161,7 +161,7 @@ else:
         ((df["TURMA"] == turma_filtro) | (turma_filtro == "Todas")) &
         ((df["TURMA"] == turma_filtro) | (turma_filtro == "Todas")) &
         ((df["ESTUDANTE"] == estudante_filtro) | (estudante_filtro == "Todos")) &
-        ((df["COMPONENTE CURRICULAR"] == componente_filtro) | (componente_filtro == "Todos"))
+        ((df["COMPONENTE CURRICULAR"] == componente_filtro))
     ].copy()
     
     st.dataframe(data=df_final,hide_index=True)
