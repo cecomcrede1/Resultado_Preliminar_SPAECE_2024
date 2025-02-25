@@ -127,6 +127,11 @@ else:
     # FILTROS GERAIS
     escolas_disponiveis = ["Todas"] + sorted(df["ESCOLA"].unique().tolist())
     escola_filtro = st.sidebar.selectbox("Selecione a Escola", escolas_disponiveis)
+    df_filtrado_etapa = df_filtrado_escola if etapa_filtro == "Todas" else df_filtrado_escola[df_filtrado_escola["ETAPA"] == etapa_filtro]
+
+    # Filtrando etapas
+    etapas_disponiveis = ["Todas"] + sorted(df_filtrado_etapa["ETAPA"].unique().tolist())
+    etapa_filtro = st.sidebar.selectbox("Selecione a Etapa", etapas_disponiveis)
 
     # Filtrando turmas
     df_filtrado_escola = df if escola_filtro == "Todas" else df[df["ESCOLA"] == escola_filtro]
@@ -149,6 +154,7 @@ else:
     # Aplicando todos os filtros
     df_final = df[
         ((df["ESCOLA"] == escola_filtro) | (escola_filtro == "Todas")) &
+        ((df["TURMA"] == turma_filtro) | (turma_filtro == "Todas")) &
         ((df["TURMA"] == turma_filtro) | (turma_filtro == "Todas")) &
         ((df["ESTUDANTE"] == estudante_filtro) | (estudante_filtro == "Todos")) &
         ((df["COMPONENTE CURRICULAR"] == componente_filtro) | (componente_filtro == "Todos"))
