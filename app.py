@@ -147,6 +147,7 @@ else:
 
     # Filtrando componentes curriculares
     componentes_disponiveis = ["Todos"] + sorted(df_filtrado_turma["COMPONENTE CURRICULAR"].unique().tolist())
+    indice_padrao = componentes_disponiveis.index("LP") if "LP" in componentes_disponiveis else 0
     componente_filtro = st.sidebar.selectbox("Selecione o Componente Curricular", componentes_disponiveis)
     
 
