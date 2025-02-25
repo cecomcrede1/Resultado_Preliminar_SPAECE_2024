@@ -125,17 +125,16 @@ else:
         df = df[df["MUNICÍPIO"] == municipio_usuario]
     #-------------------
     # FILTROS GERAIS
-    escolas_disponiveis = ["Todas"] + sorted(df["ESCOLA"].unique().tolist())
-    escola_filtro = st.sidebar.selectbox("Selecione a Escola", escolas_disponiveis)
-    
+    df_filtrado_escola = df[df["ESCOLA"] == escola_usuario]
     # Filtrando etapas
-    etapas_disponiveis = ["Todas"] + sorted(escola_filtro["ETAPA"].unique().tolist())
+    etapas_disponiveis = ["Todas"] + sorted(df_filtrado_escola["ETAPA"].unique().tolist())
+    
     etapa_filtro = st.sidebar.selectbox("Selecione a Etapa", etapas_disponiveis)
-    df_filtrado_etapa = df_filtrado_escola if etapa_filtro == "Todas" else df_filtrado_escola[df_filtrado_escola["ETAPA"] == etapa_filtro]
 
+    df_filtrado_etapa = df_filtrado_escola if etapa_filtro == "Todas" else df_filtrado_escola[df_filtrado_escola["ETAPA"] == etapa_filtro]
+    
     # Filtrando turmas
-    df_filtrado_escola = df if escola_filtro == "Todas" else df[df["ESCOLA"] == escola_filtro]
-    turmas_disponiveis = ["Todas"] + sorted(df_filtrado_escola["TURMA"].unique().tolist())
+    turmas_disponiveis = ["Todas"] + sorted(df_filtrado_etapa["TURMA"].unique().tolist())
     turma_filtro = st.sidebar.selectbox("Selecione a Turma", turmas_disponiveis)
 
     # Filtrando estudantes
@@ -146,6 +145,7 @@ else:
     # Filtrando componentes curriculares
     componentes_disponiveis = ["Todos"] + sorted(df_filtrado_turma["COMPONENTE CURRICULAR"].unique().tolist())
     componente_filtro = st.sidebar.selectbox("Selecione o Componente Curricular", componentes_disponiveis)
+
 
 
 
