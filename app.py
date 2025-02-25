@@ -222,23 +222,26 @@ else:
     col3.metric(label="Não Avaliados", value=n_avaliados)
 
     # Definir a ordem desejada das faixas
+    # Definir a ordem desejada das faixas
     ordem_faixas = [
-        "MUITO CRÍTICO", "CRÍTICO","ABAIXO DO BÁSICO", "BÁSICO", "SUFICIENTE", 
-        "INTERMEDIÁRIO", "ADEQUADO", "DESEJÁVEL", "PROFICIENTE", "AVANÇADO"
+        "ALFABETIZAÇÃO INCOMPLETA", "MUITO CRÍTICO", "CRÍTICO", "ABAIXO DO BÁSICO", 
+        "BÁSICO", "INTERMEDIÁRIO", "SUFICIENTE", "DESEJÁVEL", "ADEQUADO", 
+        "PROFICIENTE", "AVANÇADO"
     ]
-
+    
     # Definir cores personalizadas para cada faixa
     cores_faixas = {
-        "MUITO CRÍTICO": "#D32F2F",   # Vermelho escuro
-        "CRÍTICO": "#F44336",         # Vermelho
+        "ALFABETIZAÇÃO INCOMPLETA": "#D32F2F",  # Vermelho escuro
+        "MUITO CRÍTICO": "#F44336",             # Vermelho
+        "CRÍTICO": "#FF5722",                   # Laranja avermelhado
         "ABAIXO DO BÁSICO": "#FF9800",          # Laranja
-        "BÁSICO": "#FF9800",          # Laranja
-        "SUFICIENTE": "#FFEB3B",      # Amarelo
-        "INTERMEDIÁRIO": "#4CAF50",   # Verde médio
-        "ADEQUADO": "#388E3C",        # Verde escuro
-        "DESEJÁVEL": "#2196F3",       # Azul
-        "PROFICIENTE": "#3F51B5",     # Azul escuro
-        "AVANÇADO": "#673AB7"         # Roxo
+        "BÁSICO": "#FFC107",                    # Amarelo escuro
+        "INTERMEDIÁRIO": "#FFEB3B",             # Amarelo claro
+        "SUFICIENTE": "#8BC34A",                # Verde claro
+        "DESEJÁVEL": "#4CAF50",                 # Verde médio
+        "ADEQUADO": "#388E3C",                  # Verde escuro
+        "PROFICIENTE": "#2196F3",               # Azul
+        "AVANÇADO": "#673AB7"                   # Roxo
     }
     
     # Contar a quantidade de estudantes únicos para cada faixa (somente os avaliados "SIM")
