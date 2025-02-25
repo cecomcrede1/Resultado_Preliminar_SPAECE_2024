@@ -223,7 +223,7 @@ else:
 
     # Definir a ordem desejada das faixas
     ordem_faixas = [
-        "MUITO CRÍTICO", "CRÍTICO", "BÁSICO", "SUFICIENTE", 
+        "MUITO CRÍTICO", "CRÍTICO","ABAIXO DO BÁSICO", "BÁSICO", "SUFICIENTE", 
         "INTERMEDIÁRIO", "ADEQUADO", "DESEJÁVEL", "PROFICIENTE", "AVANÇADO"
     ]
 
@@ -231,6 +231,7 @@ else:
     cores_faixas = {
         "MUITO CRÍTICO": "#D32F2F",   # Vermelho escuro
         "CRÍTICO": "#F44336",         # Vermelho
+        "ABAIXO DO BÁSICO": "#FF9800",          # Laranja
         "BÁSICO": "#FF9800",          # Laranja
         "SUFICIENTE": "#FFEB3B",      # Amarelo
         "INTERMEDIÁRIO": "#4CAF50",   # Verde médio
