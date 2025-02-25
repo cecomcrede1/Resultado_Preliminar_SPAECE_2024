@@ -198,7 +198,7 @@ else:
     df_avaliados = df_final[df_final['AVALIADO'] == 'SIM']
     
     # Calcular a média das proficiências
-    media_proficiencia = int(df_avaliados['PROFICIENCIA MÉDIA'].astype(float).mean()))
+    media_proficiencia = int(df_avaliados['PROFICIENCIA MÉDIA'].astype(float).mean())
 
     st.metric(label="Média dos alunos presentes", value=media_proficiencia)
     
