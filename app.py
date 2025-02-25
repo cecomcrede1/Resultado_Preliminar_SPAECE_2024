@@ -146,14 +146,8 @@ else:
     estudante_filtro = st.sidebar.selectbox("Selecione o Estudante", estudantes_disponiveis)
 
     # Filtrando componentes curriculares
-    # Obter a lista de componentes curriculares disponíveis
-    componentes_disponiveis = sorted(set(df_filtrado_turma["COMPONENTE CURRICULAR"].astype(str).str.strip()))
-    
-    # Verificar se "LP" está na lista e definir seu índice, senão usa o primeiro item
-    indice_padrao = componentes_disponiveis.index("LP") if "LP" in componentes_disponiveis else 0
-    
-    # Criar o selectbox com a opção "LP" pré-selecionada, se disponível
-    componente_filtro = st.sidebar.selectbox("Selecione o Componente Curricular", componentes_disponiveis, index=indice_padrao)
+    componentes_disponiveis = sorted(df_filtrado_turma["COMPONENTE CURRICULAR"].unique().tolist())
+    componente_filtro = st.sidebar.selectbox("Selecione o Componente Curricular", componentes_disponiveis)
     
 
 
