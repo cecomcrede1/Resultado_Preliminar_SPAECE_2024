@@ -157,6 +157,7 @@ else:
     # Aplicando todos os filtros
     df_final = df[
         ((df["ESCOLA"] == escola_filtro) | (escola_filtro == "Todas")) &
+        ((df["ETAPA"] == etapa_filtro) | (etapa_filtro == "Todas")) &
         ((df["TURMA"] == turma_filtro) | (turma_filtro == "Todas")) &
         ((df["TURMA"] == turma_filtro) | (turma_filtro == "Todas")) &
         ((df["ESTUDANTE"] == estudante_filtro) | (estudante_filtro == "Todos")) &
