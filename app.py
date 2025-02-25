@@ -125,7 +125,10 @@ else:
         df = df[df["MUNICÍPIO"] == municipio_usuario]
     #-------------------
     # FILTROS GERAIS
-    df_filtrado_escola = df[df["ESCOLA"] == escola_usuario]
+    escolas_disponiveis = ["Todas"] + sorted(df["ESCOLA"].unique().tolist())
+    escola_filtro = st.sidebar.selectbox("Selecione a Escola", escolas_disponiveis)
+    
+    df_filtrado_escola = df[df["ESCOLA"] == escola_filtro]
     # Filtrando etapas
     etapas_disponiveis = ["Todas"] + sorted(df_filtrado_escola["ETAPA"].unique().tolist())
     
