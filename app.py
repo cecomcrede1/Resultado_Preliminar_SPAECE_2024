@@ -172,6 +172,92 @@ else:
     )
         
     st.markdown("---")
+
+        #RESUMO
+    st.markdown(
+        "<h3 style='font-family: Kanit; font-size: 20px; font-weight: bold;'>RESUMO</h3>",
+        unsafe_allow_html=True
+    )
+
+    st.markdown(
+        "<h3 style='font-family: Kanit; font-size: 18px; font-weight: bold;'>Proficiência:</h3>",
+        unsafe_allow_html=True
+    )
+    
+    # Filtrar apenas os estudantes avaliados
+    df_avaliados = df_final[df_final['AVALIADO'] == 'SIM']
+    
+    # Remover duplicatas de estudantes para considerar apenas um registro por estudante
+    df_unicos = df_avaliados.drop_duplicates(subset=['ESTUDANTE'])
+    
+    # Calcular a média das proficiências
+    media_proficiencia = int(df_unicos['PROFICIENCIA MÉDIA'].astype(float).mean())
+
+    st.metric(label="Média dos alunos presentes", value=media_proficiencia)
+    
+    st.markdown(
+        "<h3 style='font-family: Kanit; font-size: 18px; font-weight: bold;'>Frequência:</h3>",
+        unsafe_allow_html=True
+    )
+
+    avaliados = df_final[df_final['AVALIADO'] == 'SIM']['ESTUDANTE'].nunique()
+    n_avaliados = df_final[df_final['AVALIADO'] == 'NÃO']['ESTUDANTE'].nunique()
+    
+    # Criar três colunas
+    col1, col2, col3 = st.columns(3)
+
+    # Exibir os dados nas colunas
+    col1.metric(label="Total de Estudantes", value=avaliados+n_avaliados)
+    col2.metric(label="Avaliados", value=avaliados)
+    col3.metric(label="Não Avaliados", value=n_avaliados)
+
+    # Definir a ordem desejada das faixas
+    ordem_faixas = [
+        "MUITO CRÍTICO", "CRÍTICO", "BÁSICO", "SUFICIENTE", 
+        "INTERMEDIÁRIO", "ADEQUADO", "DESEJÁVEL", "PROFICIENTE", "AVANÇADO"
+    ]
+
+    # Definir cores personalizadas para cada faixa
+    cores_faixas = {
+        "MUITO CRÍTICO": "#D32F2F",   # Vermelho escuro
+        "CRÍTICO": "#F44336",         # Vermelho
+        "BÁSICO": "#FF9800",          # Laranja
+        "SUFICIENTE": "#FFEB3B",      # Amarelo
+        "INTERMEDIÁRIO": "#4CAF50",   # Verde médio
+        "ADEQUADO": "#388E3C",        # Verde escuro
+        "DESEJÁVEL": "#2196F3",       # Azul
+        "PROFICIENTE": "#3F51B5",     # Azul escuro
+        "AVANÇADO": "#673AB7"         # Roxo
+    }
+    
+    # Contar a quantidade de estudantes únicos para cada faixa (somente os avaliados "SIM")
+    faixa_counts = df_final[df_final['AVALIADO'] == 'SIM'].groupby('FAIXAS')['ESTUDANTE'].nunique()
+    
+    # Reorganizar os dados conforme a ordem desejada, removendo faixas com valor 0
+    faixa_counts = {faixa: faixa_counts.get(faixa, 0) for faixa in ordem_faixas}
+    faixa_counts = {faixa: count for faixa, count in faixa_counts.items() if count > 0}  # Remove os zeros
+    
+    
+    # Criar colunas dinamicamente com as faixas filtradas
+    cols = st.columns(len(faixa_counts))
+    
+    # Exibir cada faixa na ordem definida
+    #for col, (faixa, count) in zip(cols, faixa_counts.items()):
+    #    col.metric(label=faixa, value=count)
+
+    # Criar DataFrame para o gráfico
+    df_faixas = pd.DataFrame(list(faixa_counts.items()), columns=["Faixa", "Quantidade"])
+    
+    # Criar gráfico de barras
+    fig = px.bar(df_faixas, x="Faixa", y="Quantidade", text="Quantidade",
+                 title="Distribuição de Estudantes por Faixa",
+                 labels={"Faixa": "Faixa de Proficiência", "Quantidade": "Número de Estudantes"},
+                 color="Faixa",
+                 color_discrete_map=cores_faixas) # Adiciona cores diferentes para cada faixa
+    
+    fig.update_traces(textposition="outside")  # Exibir valores fora das barras
+
+    st.plotly_chart(fig)
         
     if st.sidebar.button("Sair"):
         st.session_state.clear()
