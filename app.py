@@ -127,11 +127,11 @@ else:
     # FILTROS GERAIS
     escolas_disponiveis = ["Todas"] + sorted(df["ESCOLA"].unique().tolist())
     escola_filtro = st.sidebar.selectbox("Selecione a Escola", escolas_disponiveis)
-    df_filtrado_etapa = df_filtrado_escola if etapa_filtro == "Todas" else df_filtrado_escola[df_filtrado_escola["ETAPA"] == etapa_filtro]
-
+    
     # Filtrando etapas
     etapas_disponiveis = ["Todas"] + sorted(df_filtrado_etapa["ETAPA"].unique().tolist())
     etapa_filtro = st.sidebar.selectbox("Selecione a Etapa", etapas_disponiveis)
+    df_filtrado_etapa = df_filtrado_escola if etapa_filtro == "Todas" else df_filtrado_escola[df_filtrado_escola["ETAPA"] == etapa_filtro]
 
     # Filtrando turmas
     df_filtrado_escola = df if escola_filtro == "Todas" else df[df["ESCOLA"] == escola_filtro]
