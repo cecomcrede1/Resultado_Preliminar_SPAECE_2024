@@ -146,7 +146,7 @@ else:
     estudante_filtro = st.sidebar.selectbox("Selecione o Estudante", estudantes_disponiveis)
 
     # Filtrando componentes curriculares
-    componentes_disponiveis = ["Todos"] + sorted(df_filtrado_turma["COMPONENTE CURRICULAR"].unique().tolist())
+    componentes_disponiveis = sorted(df_filtrado_turma["COMPONENTE CURRICULAR"].unique().tolist())
     componente_filtro = st.sidebar.selectbox("Selecione o Componente Curricular", componentes_disponiveis)
 
 
