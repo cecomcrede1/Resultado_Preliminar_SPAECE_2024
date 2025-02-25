@@ -129,7 +129,7 @@ else:
     escola_filtro = st.sidebar.selectbox("Selecione a Escola", escolas_disponiveis)
     
     # Filtrando etapas
-    etapas_disponiveis = ["Todas"] + sorted(df_filtrado_etapa["ETAPA"].unique().tolist())
+    etapas_disponiveis = ["Todas"] + sorted(escola_filtro["ETAPA"].unique().tolist())
     etapa_filtro = st.sidebar.selectbox("Selecione a Etapa", etapas_disponiveis)
     df_filtrado_etapa = df_filtrado_escola if etapa_filtro == "Todas" else df_filtrado_escola[df_filtrado_escola["ETAPA"] == etapa_filtro]
 
