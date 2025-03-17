@@ -38,7 +38,7 @@ st.markdown(
 # AUTENTICAÇÃO
 #-------------------
 #USERS = {"crede01": "0", "aquiraz": "0", "caucaia": "0", "eusebio": "0","guaiuba":"0","itaitinga":"0","maracanau":"0","maranguape":"0","pacatuba":"0"}
-USERS ={"crede01": "x3f7h9", "aquiraz": "p8l2m5", "caucaia": "k4t9y7", "eusebio": "m1n5z8", "guaiuba": "h2v8j6", "itaitinga": "q9w6x4", "maracanau": "r3y7m1", "maranguape": "n5t4v9", "pacatuba": "j8k2h5"}
+USERS ={"crede01": "0000", "aquiraz": "p8l2m5", "caucaia": "k4t9y7", "eusebio": "m1n5z8", "guaiuba": "h2v8j6", "itaitinga": "q9w6x4", "maracanau": "r3y7m1", "maranguape": "n5t4v9", "pacatuba": "j8k2h5"}
 MUNICIPIOS = {"crede01": "Crede 01", "aquiraz": "AQUIRAZ", "caucaia": "CAUCAIA", "eusebio": "EUSEBIO", "guaiuba":"GUAIUBA","itaitinga":"ITAITINGA", "maracanau":"MARACANAU", "maranguape":"MARANGUAPE", "pacatuba":"PACATUBA" }
 
 if "authenticated" not in st.session_state:
